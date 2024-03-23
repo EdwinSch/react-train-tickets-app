@@ -6,7 +6,7 @@ Showcasing: form handling and validation, Math functions, state management, cont
 
 ### Live Demo
 
-🚀 [Deployed App](https://)
+🚀 [Deployed App](https://jazzy-heliotrope-9809dc.netlify.app/)
 
 #### 🛠️ Build with
 
