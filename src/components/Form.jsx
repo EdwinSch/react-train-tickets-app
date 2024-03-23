@@ -4,6 +4,7 @@ import { useState } from "react";
 const Form = () => {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
+  const [date, setDate] = useState("");
 
   const handleDepartureSelect = (event) => {
     const selectedDeparture = stations.find((station) => {
@@ -19,17 +20,34 @@ const Form = () => {
     setDestination(selectedDestination);
   };
 
+  const handleDateSelect = (event) => {
+    setDate(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(departure, destination);
+
+    // Validate Inputs
+    if (!destination || !departure || !date) {
+      console.log("no input!");
+      return;
+    }
+
+    // Calulate Stops
+    const stops = Math.abs(+destination.stopNumber - +departure.stopNumber);
+    console.log(stops);
+
+    // Format date
+
+    console.log(departure, destination, date);
   };
 
   return (
-    <form
-      className="bg-white mt-10 px-10 py-4 rounded-lg"
-      onSubmit={handleSubmit}
-    >
-      <div id="container" className="flex justify-center gap-12">
+    <form className="bg-white mt-10 p-10 rounded-lg" onSubmit={handleSubmit}>
+      <div
+        id="container"
+        className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 "
+      >
         {/* Select Departure */}
         <div id="select-wrapper" className="w-full">
           <label
@@ -46,6 +64,7 @@ const Form = () => {
             defaultValue={departure}
             value={departure.stopName}
             onChange={handleDepartureSelect}
+            required
           >
             <option value="" disabled>
               Select station
@@ -76,6 +95,7 @@ const Form = () => {
             defaultValue={destination}
             value={destination.stopName}
             onChange={handleDestinatinoSelect}
+            required
           >
             <option value="" disabled>
               Select station
@@ -91,8 +111,35 @@ const Form = () => {
         </div>
       </div>
 
-      {/* Submit BTN */}
-      <input type="submit" className="submit-btn" value="buy ticket" />
+      <div
+        id="container"
+        className="mt-8 md:mt-6 flex flex-col md:flex-row gap-8 justify-between items-center"
+      >
+        {/* Date input */}
+        <div id="wrapper">
+          <label
+            htmlFor="date"
+            className="mr-2 capitalize block md:inline text-center mb-2 md:mb-0"
+          >
+            travel date:
+          </label>
+          <input
+            type="date"
+            id="date"
+            value={date}
+            onChange={handleDateSelect}
+            className=" border border-black border-solid  p-2 rounded-md text-neutral-600"
+            required
+          />
+        </div>
+
+        {/* Submit BTN */}
+        <input
+          type="submit"
+          className="bg-cyan-800 hover:bg-cyan-600 duration-200 text-slate-50 capitalize px-6 py-3 font-semibold tracking-wider rounded-md cursor-pointer"
+          value="buy ticket"
+        />
+      </div>
     </form>
   );
 };
