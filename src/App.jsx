@@ -1,7 +1,13 @@
-import Logo from "./components/Logo";
+import Header from "./components/Header";
+import Form from "./components/Form";
 
 function App() {
-  return <Logo />;
+  return (
+    <>
+      <Header />
+      <Form />
+    </>
+  );
 }
 
 export default App;
