@@ -63,7 +63,7 @@ const Form = () => {
 
   return (
     <form
-      className="bg-white mt-10 p-6 md:p-10 rounded-lg"
+      className="bg-white mt-6 p-6 md:p-10 rounded-lg"
       onSubmit={handleSubmit}
     >
       <div

@@ -3,6 +3,8 @@ import QRCode from "react-qr-code";
 
 const Ticket = () => {
   const { departure, destination, date, price } = useGlobalContext();
+
+  console.log(departure, destination, date, price);
   return (
     <div
       id="ticket-container"
@@ -18,7 +20,10 @@ const Ticket = () => {
         <p>Price: &euro; {price}</p>
       </div>
       <div id="code-container" className="qr">
-        <QRCode size={180} value={(departure, destination, date, price)} />
+        <QRCode
+          size={180}
+          value={(departure.stopName, destination.stopName, date, price)}
+        />
       </div>
     </div>
   );
