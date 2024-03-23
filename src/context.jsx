@@ -9,6 +9,8 @@ const AppContext = ({ children }) => {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
+  const [price, setPrice] = useState("");
+  const [showTicket, setShowTicket] = useState(true);
 
   return (
     <GlobalContext.Provider
@@ -19,6 +21,10 @@ const AppContext = ({ children }) => {
         setDestination,
         date,
         setDate,
+        showTicket,
+        setShowTicket,
+        price,
+        setPrice,
       }}
     >
       {children}

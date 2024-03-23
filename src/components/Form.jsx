@@ -9,6 +9,7 @@ const Form = () => {
     setDestination,
     date,
     setDate,
+    setPrice,
   } = useGlobalContext();
 
   const handleDepartureSelect = (event) => {
@@ -41,6 +42,15 @@ const Form = () => {
     // Calulate Stops
     const stops = Math.abs(+destination.stopNumber - +departure.stopNumber);
     console.log(stops);
+
+    // Set Price
+    if (stops <= 2) {
+      setPrice("1,50");
+    } else if (stops >= 6) {
+      setPrice("3,00");
+    } else {
+      setPrice("2,25");
+    }
 
     // Format date
 
