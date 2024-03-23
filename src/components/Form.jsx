@@ -1,10 +1,15 @@
 import stations from "../data";
-import { useState } from "react";
+import { useGlobalContext } from "../context";
 
 const Form = () => {
-  const [departure, setDeparture] = useState("");
-  const [destination, setDestination] = useState("");
-  const [date, setDate] = useState("");
+  const {
+    departure,
+    setDeparture,
+    destination,
+    setDestination,
+    date,
+    setDate,
+  } = useGlobalContext();
 
   const handleDepartureSelect = (event) => {
     const selectedDeparture = stations.find((station) => {
@@ -39,11 +44,19 @@ const Form = () => {
 
     // Format date
 
+    // Reset Inputs
+    // setDeparture("");
+    // setDestination("");
+    // setDate("");
+
     console.log(departure, destination, date);
   };
 
   return (
-    <form className="bg-white mt-10 p-10 rounded-lg" onSubmit={handleSubmit}>
+    <form
+      className="bg-white mt-10 p-6 md:p-10 rounded-lg"
+      onSubmit={handleSubmit}
+    >
       <div
         id="container"
         className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 "
