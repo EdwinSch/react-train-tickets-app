@@ -10,6 +10,7 @@ const Form = () => {
     date,
     setDate,
     setPrice,
+    setShowTicket,
   } = useGlobalContext();
 
   const handleDepartureSelect = (event) => {
@@ -54,12 +55,10 @@ const Form = () => {
 
     // Format date
 
-    // Reset Inputs
-    // setDeparture("");
-    // setDestination("");
-    // setDate("");
+    // Output Ticket
+    setShowTicket(true);
 
-    console.log(departure, destination, date);
+    // console.log(departure, destination, date);
   };
 
   return (

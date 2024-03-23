@@ -12,3 +12,8 @@ body {
 .inspect {
   border: solid red 1px;
 }
+
+.qr {
+  margin: 0 auto;
+  width: fit-content;
+}
