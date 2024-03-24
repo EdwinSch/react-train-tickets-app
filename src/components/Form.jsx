@@ -39,10 +39,14 @@ const Form = () => {
       console.log("no input!");
       return;
     }
+    if (departure.stopName === destination.stopName) {
+      console.log("no route");
+      return;
+    }
 
     // Calulate Stops
     const stops = Math.abs(+destination.stopNumber - +departure.stopNumber);
-    console.log(stops);
+    // console.log(stops);
 
     // Set Price
     if (stops <= 2) {

@@ -10,8 +10,8 @@ function App() {
   return (
     <>
       <Header />
-      <Map />
-      <Form />
+      {showTicket || <Map />}
+      {showTicket || <Form />}
       {showTicket && <Ticket />}
     </>
   );
