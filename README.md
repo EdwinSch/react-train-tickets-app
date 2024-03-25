@@ -14,6 +14,7 @@ Showcasing: form handling and validation, Math functions, state management, cont
 - Tailwind
 - Vite
 - React QR Code (NPM)
+- React Toastify (NPM)
 
 #### 💻 Run this project
 

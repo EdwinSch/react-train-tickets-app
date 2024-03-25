@@ -2,9 +2,25 @@ import { useGlobalContext } from "../context";
 import QRCode from "react-qr-code";
 
 const Ticket = () => {
-  const { departure, destination, date, price, setShowTicket } =
-    useGlobalContext();
+  const {
+    departure,
+    destination,
+    date,
+    price,
+    setShowTicket,
+    setDeparture,
+    setDestination,
+    setDate,
+  } = useGlobalContext();
   // console.log(departure, destination, date, price);
+
+  const handleBackBtn = () => {
+    setShowTicket(false);
+    // Reset values
+    setDeparture("");
+    setDestination("");
+    setDate("");
+  };
 
   return (
     <div
@@ -28,7 +44,7 @@ const Ticket = () => {
         />
       </div>
       <button
-        onClick={() => setShowTicket(false)}
+        onClick={handleBackBtn}
         type="button"
         className="mt-16 bg-cyan-800 hover:bg-cyan-600 duration-200 text-slate-50 capitalize px-6 py-3 font-semibold tracking-wider rounded-md cursor-pointer"
       >
