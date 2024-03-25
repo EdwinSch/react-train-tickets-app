@@ -142,11 +142,11 @@ const Form = () => {
         className="mt-8 md:mt-6 flex flex-col md:flex-row gap-8 justify-between items-center"
       >
         {/* Date input */}
-        <div id="wrapper">
-          <label
-            htmlFor="date"
-            className="mr-2 capitalize block md:inline text-center mb-2 md:mb-0"
-          >
+        <div
+          id="wrapper"
+          className="flex items-center flex-col md:flex-row gap-2"
+        >
+          <label htmlFor="date" className=" capitalize block text-center">
             travel date:
           </label>
           <input
@@ -157,12 +157,18 @@ const Form = () => {
             className=" border border-black border-solid  p-2 rounded-md text-neutral-600"
             required
           />
+          <button
+            className="bg-cyan-800 hover:bg-cyan-600 duration-200 text-slate-50 capitalize px-6 py-2.5 font-semibold tracking-wider rounded-md cursor-pointer"
+            type="button"
+          >
+            Today
+          </button>
         </div>
 
         {/* Submit BTN */}
         <input
           type="submit"
-          className="bg-cyan-800 hover:bg-cyan-600 duration-200 text-slate-50 capitalize px-6 py-3 font-semibold tracking-wider rounded-md cursor-pointer"
+          className="mt-6 md:mt-0 bg-green-800 hover:bg-green-600 duration-200 text-slate-50 capitalize px-6 py-2.5 font-semibold tracking-wider rounded-md cursor-pointer"
           value="buy ticket"
         />
       </div>
