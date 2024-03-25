@@ -1,5 +1,9 @@
 import stations from "../data";
 import { useGlobalContext } from "../context";
+import moment from "moment";
+// TOAST
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Form = () => {
   const {
@@ -27,8 +31,13 @@ const Form = () => {
     setDestination(selectedDestination);
   };
 
-  const handleDateSelect = (event) => {
+  const handleDatePicker = (event) => {
     setDate(event.target.value);
+  };
+
+  const handleTodayBtn = () => {
+    const today = moment().format("YYYY-MM-DD");
+    setDate(today);
   };
 
   const handleSubmit = (event) => {
@@ -36,11 +45,11 @@ const Form = () => {
 
     // Validate Inputs
     if (!destination || !departure || !date) {
-      console.log("no input!");
+      console.log("no input");
       return;
     }
     if (departure.stopName === destination.stopName) {
-      console.log("no route");
+      toast.warning("This route is not possible");
       return;
     }
 
@@ -57,8 +66,6 @@ const Form = () => {
       setPrice("2,25");
     }
 
-    // Format date
-
     // Output Ticket
     setShowTicket(true);
 
@@ -70,6 +77,7 @@ const Form = () => {
       className="bg-white mt-6 p-6 md:p-10 rounded-lg"
       onSubmit={handleSubmit}
     >
+      <ToastContainer position="top-center" autoClose={2500} />
       <div
         id="container"
         className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 "
@@ -139,25 +147,29 @@ const Form = () => {
 
       <div
         id="container"
-        className="mt-8 md:mt-6 flex flex-col md:flex-row gap-8 justify-between items-center"
+        className="mt-6 flex flex-col md:flex-row gap-8 justify-between items-center"
       >
         {/* Date input */}
         <div
           id="wrapper"
-          className="flex items-center flex-col md:flex-row gap-2"
+          // className="flex items-center flex-col md:flex-row gap-2"
         >
-          <label htmlFor="date" className=" capitalize block text-center">
+          <label
+            htmlFor="date"
+            className="mb-2 md:mb-0 capitalize block md:inline text-center"
+          >
             travel date:
           </label>
           <input
             type="date"
             id="date"
             value={date}
-            onChange={handleDateSelect}
-            className=" border border-black border-solid  p-2 rounded-md text-neutral-600"
+            onChange={handleDatePicker}
+            className="mr-2 md:mx-2.5 border border-black border-solid  p-2 rounded-md text-neutral-600"
             required
           />
           <button
+            onClick={handleTodayBtn}
             className="bg-cyan-800 hover:bg-cyan-600 duration-200 text-slate-50 capitalize px-6 py-2.5 font-semibold tracking-wider rounded-md cursor-pointer"
             type="button"
           >
@@ -168,7 +180,7 @@ const Form = () => {
         {/* Submit BTN */}
         <input
           type="submit"
-          className="mt-6 md:mt-0 bg-green-800 hover:bg-green-600 duration-200 text-slate-50 capitalize px-6 py-2.5 font-semibold tracking-wider rounded-md cursor-pointer"
+          className="mt-4 md:mt-0 bg-green-800 hover:bg-green-600 duration-200 text-slate-50 capitalize px-6 py-2.5 font-semibold tracking-wider rounded-md cursor-pointer"
           value="buy ticket"
         />
       </div>
